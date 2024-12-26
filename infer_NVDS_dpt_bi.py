@@ -329,13 +329,13 @@ if __name__ == '__main__':
     args = parser.parse_args()
     
     model_flow = GMFlow(feature_channels=args.feature_channels,
-                   num_scales=args.num_scales,
-                   upsample_factor=args.upsample_factor,
-                   num_head=args.num_head,
-                   attention_type=args.attention_type,
-                   ffn_dim_expansion=args.ffn_dim_expansion,
-                   num_transformer_layers=args.num_transformer_layers,
-                   ).to(device_flow)
+            num_scales=args.num_scales,
+            upsample_factor=args.upsample_factor,
+            num_head=args.num_head,
+            attention_type=args.attention_type,
+            ffn_dim_expansion=args.ffn_dim_expansion,
+            num_transformer_layers=args.num_transformer_layers,
+            ).to(device_flow)
     model_flow = torch.nn.DataParallel(model_flow,device_ids=[0]) 
     model_flow = model_flow.module
     args.resume = './gmflow/checkpoints/gmflow_sintel-0c07dcb3.pth'
